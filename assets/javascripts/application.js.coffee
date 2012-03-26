@@ -30,7 +30,7 @@ $ ->
     map = new google.maps.Map document.getElementById('map'), 
       zoom: zoom
       center: center
-      mapTypeId: google.maps.MapTypeId.TERRAIN
+      mapTypeId: google.maps.MapTypeId.ROADMAP
 
     marker = new google.maps.Marker
       map: map
