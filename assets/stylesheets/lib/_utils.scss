@@ -1,0 +1,13 @@
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  line-height: 0px;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix { display: inline-block; }
+.clearfix { display: block; }
+* html .clearfix { height: 1px; }
+.hidden { display: none; }
+.replaced { text-indent: -9999em; }
