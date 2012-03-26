@@ -49,7 +49,7 @@ $ ->
       $lng_display.text(data.lng)
       $address_display.text(data.address)
       $search_field.val(data.address)
-      $link.val("#{location.origin}?lat=#{data.lat}&lng=#{data.lng}")
+      $link.val("http://#{location.host}?lat=#{data.lat}&lng=#{data.lng}")
       $details.slideDown()
 
     fetch = (latLng) ->
