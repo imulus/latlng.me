@@ -37,12 +37,13 @@ $ ->
       center: center
       draggable: true
 
-    set = (data) ->
+    set = (data, force_zoom = false) ->
       center = new google.maps.LatLng data.lat, data.lng
-      zoom ||= data.zoom
       marker.setPosition center
       map.setCenter center
-      map.setZoom zoom
+      if data.zoom?
+        zoom ||= data.zoom
+        map.setZoom zoom
       $tips.slideDown()
       $results.slideUp()
       $lat_display.text(data.lat)
