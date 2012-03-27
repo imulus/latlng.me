@@ -219,10 +219,81 @@ h2 {
 /* iPhone */
 @media (max-width: 480px) {
 
-}
+  header {
+    padding: 10px 0 15px;
+    border-top-width: 1px;
+  }
+  
+  h1 {
+    font-size: 16px;
+    margin-bottom: 10px;      
+  }
+  
+  
+  .container {
+    width: 100%;
+  }
 
-/* Between iPad portait and iPhone */
-@media (max-width: 767px) {
+  #search {
+    padding: 0;
+    margin: 0;
 
+    input {
+      width: 85%;
+      display: block;
+      margin: auto;
+      padding: 6px 9px;
+      font-size: 14px;
+    }
+  }
+
+  #tips {
+    font-size: 12px;
+    padding: 10px 0 10px;
+  }
+
+  #results {
+    left: 0; right: 0;
+  }
+
+  #results ul {
+    top: 0;
+  }
+
+  #results ul li a {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  #results ul li a i {
+    top: 4px; right: 5px;
+    padding: 3px 9px 2px 8px;
+  }
+
+  #map {
+    top: 105px;
+  }
+
+  #location-details {
+    display: none;
+    position: fixed;
+    bottom: 0; 
+    left: 0; right: 0;
+    font-size: 11px;
+
+    > .container {
+      width: 100%;
+      padding: 5px 10px;    
+      @include border-radius(0);      
+    }
+  }
+
+  #location-details .right {
+    display: none;
+  }
+  
+  #github {
+    display: none;
+  }
 }
 
