@@ -21,7 +21,6 @@ body {
   font-weight: normal;
   line-height: normal;
   color: #777;
-  background: transparent url('http://subtlepatterns.com/patterns/gridme.png') top center fixed repeat;  
 }
 
 
@@ -43,7 +42,7 @@ input {
 
 
 header {
-  @include gradient(rgba(0,20,20,0.8), rgba(0,20,20,1));
+  @include gradient(rgba(0,20,20,0.8), rgba(0,20,20,1), #001414);
   border-top: 5px solid rgba(0,20,20,1);
   padding: 20px 0 10px;
   position: relative;  
@@ -91,6 +90,7 @@ h2 {
   z-index: 9999;
   top: 100%;
   left: 0; right: 0;
+  background: #001414;
   background: rgba(0,20,20,1);
   padding: 0 0 20px;
   text-align: center;
@@ -99,6 +99,7 @@ h2 {
 }
 
 #results {
+  background: #001414;
   background: rgba(0,20,20,1);
   position: absolute;
   top: 100%; 

@@ -21,12 +21,13 @@ $ ->
     $link             = $('#link')
 
     geocoder  = new google.maps.Geocoder()
-    center    = new google.maps.LatLng(0,0)
 
-
-    if google.loader.ClientLocation
+    if google.loader.ClientLocation?
       center = new google.maps.LatLng google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude
       zoom = 12
+    else
+      center = new google.maps.LatLng(0,0)
+      zoom = 3
 
 
     map = new google.maps.Map document.getElementById('map'),
