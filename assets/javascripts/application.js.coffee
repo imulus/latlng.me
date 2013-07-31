@@ -21,6 +21,8 @@ $ ->
     $link             = $('#link')
 
     geocoder  = new google.maps.Geocoder()
+    autoCompleteService = new google.maps.places.AutocompleteService()
+    placesService = new google.maps.places.PlacesService $('<div/>')[0]
 
     if google.loader.ClientLocation?
       center = new google.maps.LatLng google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude
@@ -85,6 +87,13 @@ $ ->
     update_link = ->
       $link.val("http://#{location.host}?lat=#{lat}&lng=#{lng}&zoom=#{zoom}")
 
+    fetch_coords = (data, callback) ->
+      placesService.getDetails
+        reference: data.reference
+      , (results, status) ->
+        data.lat = results.geometry.location.jb
+        data.lng = results.geometry.location.kb
+        return callback data
 
     $search_field.bind
       keyup : (event) ->
@@ -94,14 +103,15 @@ $ ->
 
     $search_field.autocomplete
       source: (request, response) ->
-        geocoder.geocode {'address': request.term }, (results, status) ->
+        autoCompleteService.getPlacePredictions
+          input: request.term
+        , (results, status) ->
           response $.map results, (item) ->
             return {
-              label:      item.formatted_address
-              value:      item.formatted_address
-              address:    item.formatted_address
-              lat:        item.geometry.location.lat()
-              lng:        item.geometry.location.lng()
+              label: item.description
+              value: item.description
+              address: item.description
+              reference: item.reference
             }
 
       search: (event, ui) ->
@@ -123,7 +133,7 @@ $ ->
     $('a', $results).live 'click', ->
       data = $(this).data('item.autocomplete')
       data.zoom = 17
-      set data
+      fetch_coords data, set
 
 
     google.maps.event.addListener marker, 'dragend', ->
@@ -141,7 +151,7 @@ $ ->
 
 
 
-  google.load "maps", "3.x", other_params: "sensor=false", callback: initialize
+  google.load "maps", "3.x", other_params: "sensor=false&libraries=places", callback: initialize
 
 
 
