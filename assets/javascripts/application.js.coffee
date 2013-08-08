@@ -91,8 +91,8 @@ $ ->
       placesService.getDetails
         reference: data.reference
       , (results, status) ->
-        data.lat = results.geometry.location.lb
-        data.lng = results.geometry.location.mb
+        data.lat = results.geometry.location.lat()
+        data.lng = results.geometry.location.lng()
         return callback data
 
     $search_field.bind
