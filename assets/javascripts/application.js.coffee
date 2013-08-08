@@ -106,6 +106,7 @@ $ ->
         autoCompleteService.getPlacePredictions
           input: request.term
         , (results, status) ->
+          if results is null then return false
           response $.map results, (item) ->
             return {
               label: item.description
